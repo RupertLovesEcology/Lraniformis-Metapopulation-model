@@ -1,7 +1,7 @@
 # A stochastic hydroecological metapopulation model for <i>Litoria raniformis</i> which explores the role of environmental water provision in the probability of persistence over a 60 year time step
 These files underpin the stochastic hydroecological metapopulation model presented in the article "Stochastic metapopulation dynamics of a threatened amphibian to guide optimal water delivery"
 
-<strong>AUTHOR</strong>: Rupert Mathwin, Matt S. Gibbs and Corey J. A. Bradshaw
+<strong>AUTHORS</strong>: Rupert Mathwin, Matt S. Gibbs and Corey J. A. Bradshaw
 
 <strong>CONTACT</strong>: rupert.mathwin.ecology@gmail.com
 
