@@ -23,13 +23,8 @@ Repository includes the following files:
 - '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/Lraniformis_Metapopulation_Model_V12.R">Lraniformis_Metapopulation_Model_V12.R</a>' — R code to run the metapopulation model. 
 - '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/Lraniformis_Metapopulation_globalSensitivity_V12.R">Lraniformis_Metapopulation_globalSensitivity_V12.R</a>' — R code to run the metapopulation model. 
 - '<a href="https://github.com/cjabradshaw/MegafaunaSusceptibility/blob/master/matrixOperators.r">matrixOperators.R</a>' — functions to manipulate matrix models
-
-- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/CompHeightL3.csv">CompHeightL3.csv</a>' — wetland inundation records used to construct Markov-chains for stochastic resampling of inundation regimes
 - '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/wetlandMetadataV2.csv">wetlandMetadataV2.csv</a>' — column 1 is the size category (which determines the local popualtion capacity) and sill height is the river height required to start filling the wetland
-- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/AnnualTransitionsofExistingSills.R">AnnualTransitionsofExistingSills.R</a>' — c
-- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/CalculateAnnualSillsfromRaw.R">CalculateAnnualSillsfromRaw.R</a>' — c
-- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/burntinNmat.csv">burntinNmat.csv</a>' — c
-- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/timeSeriesForecastV4.R">timeSeriesForecastV4.R</a>' — c
+
 - '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/wetlandMovement.csv">wetlandMovement.csv</a>' — c
 
 - TO BE UPDATED ONCE FINALISED
