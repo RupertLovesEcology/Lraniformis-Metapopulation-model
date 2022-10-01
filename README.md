@@ -15,7 +15,7 @@ These files underpin the stochastic hydroecological metapopulation model present
 
 R code accompanies article: 
 
-<strong>Mathwin, R, Wassens, S, Gibbs, MS, Young, J, Ye, Q, Saltré, F,</strong> and <strong>Bradshaw, CJA</strong> Stochastic metapopulation dynamics of a threatened amphibian to guide optimal water delivery <i>under development</i>
+<strong>Mathwin, R, Wassens, S, Gibbs, MS, Young, J, Ye, Q, Saltré, F,</strong> and <strong>Bradshaw, CJA</strong> Stochastic metapopulation dynamics of a threatened amphibian to guide optimal water delivery <i>in review</i>
 
 <strong>AIM</strong>: This stochastic hydroecological metapopulation model examines the population viability of <i>Litoria raniformis</i> across a metapopulation of 23 wetlands between Locks 3 and 2 in southern Australia's Murray-Darling Basin. We test five competing conservation treatments which manipulate hydroperiod. We then reexamine these treatments under catastrophic drought conditions.
 
