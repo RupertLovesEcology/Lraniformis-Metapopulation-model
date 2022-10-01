@@ -20,8 +20,10 @@ R code accompanies article:
 <strong>AIM</strong>: This stochastic hydroecological metapopulation model examines the population viability of <i>Litoria raniformis</i> across a metapopulation of 23 wetlands between Locks 3 and 2 in southern Australia's Murray-Darling Basin. We test five competing conservation treatments which manipulate hydroperiod. We then reexamine these treatments under catastrophic drought conditions.
 
 Repository includes the following files:
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/Lraniformis_Metapopulation_Model_V12.R">Lraniformis_Metapopulation_Model_V12.R</a>' — R code to run the metapopulation model. 
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/Lraniformis_Metapopulation_globalSensitivity_V12.R">Lraniformis_Metapopulation_globalSensitivity_V12.R</a>' — R code to run the metapopulation model. 
 - '<a href="https://github.com/cjabradshaw/MegafaunaSusceptibility/blob/master/matrixOperators.r">matrixOperators.R</a>' — functions to manipulate matrix models
-- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/SBFMetaV12_Control.R">SBFMetaV12_Control</a>' — R code to run the metapopulation model. This version is set up for the control scenario with no intervention. To change intervention pattern- adjust 'eWaterSites' at line 770ish. To change eWater frequency change the matrix multiplication step (commenting in/out) around lines 1040
+
 - '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/CompHeightL3.csv">CompHeightL3.csv</a>' — wetland inundation records used to construct Markov-chains for stochastic resampling of inundation regimes
 - '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/wetlandMetadataV2.csv">wetlandMetadataV2.csv</a>' — column 1 is the size category (which determines the local popualtion capacity) and sill height is the river height required to start filling the wetland
 - '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/AnnualTransitionsofExistingSills.R">AnnualTransitionsofExistingSills.R</a>' — c
