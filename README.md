@@ -21,10 +21,14 @@ R code accompanies article:
 
 Repository includes the following files:
 - '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/Lraniformis_Metapopulation_Model_V12.R">Lraniformis_Metapopulation_Model_V12.R</a>' — R code to run the metapopulation model. 
-- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/Lraniformis_Metapopulation_globalSensitivity_V12.R">Lraniformis_Metapopulation_globalSensitivity_V12.R</a>' — R code to run the metapopulation model. 
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/Lraniformis_Metapopulation_globalSensitivity_V12.R">Lraniformis_Metapopulation_globalSensitivity_V12.R</a>' — R code to run the global sensitivity analysis on the metapopulation model (uses latin hypercube resampling to populate a boosted regression tree). 
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/orderedAnnualWetness.csv">orderedAnnualWetness.csv</a>' — .csv containing the summed spring and winter river heights as a proxy for wetness. Determines if the wetland remains full between years (and accumulates aquatic predators).
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/orderedAnnualWetnessDrought2.csv">orderedAnnualWetnessDrought2.csv</a>' — .csv containing the summed spring and winter river heights as a proxy for wetness. Determines if the wetland remains full between years (and accumulates aquatic predators). This treatment includes a second severe drought.
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/orderedHydroDrought2.csv">orderedHydroDrought2.csv</a>' — .csv containing the 10th highest daily river height which determines wetland filling throughout the reach. This treatment includes a second severe drought.
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/orderedHydroForecast.csv">orderedHydroForecast.csv.csv</a>' — .csv containing the 10th highest daily river height which determines wetland filling throughout the reach. 
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/PostDrought.csv">PostDrought.csv</a>' — .csv containing the 10000 starting scenarios for the reach (23 populations with age demography). 
 - '<a href="https://github.com/cjabradshaw/MegafaunaSusceptibility/blob/master/matrixOperators.r">matrixOperators.R</a>' — functions to manipulate matrix models
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/movementType.csv">movementType.csv</a>' — .csv which has classified every possible single dispersal between 2 wetlands into one of five journey types. This is used to assign landscape resistance. 
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/stayWet.csv">stayWet.csv</a>' — .csv containing the wetness threshold that each wetland requires to remian wet between years (verified from historic satelite data). 
 - '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/wetlandMetadataV2.csv">wetlandMetadataV2.csv</a>' — column 1 is the size category (which determines the local popualtion capacity) and sill height is the river height required to start filling the wetland
-
-- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/wetlandMovement.csv">wetlandMovement.csv</a>' — c
-
-- TO BE UPDATED ONCE FINALISED
+- '<a href="https://github.com/RupertLovesEcology/RiverRegulation_Frog_PopModel/blob/main/wetlandMovement.csv">wetlandMovement.csv</a>' — .csv which measures every possible single dispersal between 2 wetlands following several movement rules (e.g. can only cross the river once). 
