@@ -11,7 +11,7 @@ These files underpin the stochastic hydroecological metapopulation model present
 
 <strong>INSTITUTION</strong>: Rupert.Mathwin.Ecology
 
-<strong>RELEASE DATE</strong>: May 2022
+<strong>RELEASE DATE</strong>: September 2023
 
 R code accompanies article: 
 
