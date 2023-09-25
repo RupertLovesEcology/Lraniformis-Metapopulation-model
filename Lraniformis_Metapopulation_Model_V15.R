@@ -6,12 +6,12 @@
 ## The wet dry sequence is forecasted using a modified Markov-chain for each of winter and spring to create annual sequences
 
 # Rupert Mathwin, Matt Gibbs (hydrology) & CJA Bradshaw
-## September 2022
+## September 2023
 
 ## Remove everything
 rm(list = ls())
 
-source("C:/workspace/math0286/R/win-library/3.6/matrixOperators.r")
+
 
 ## libraries
 library(DescTools)
@@ -25,11 +25,14 @@ library(readr)
 library(iterators)
 library(reshape2)
 
+# change address below (function for matrix manipulation)
+source("C:/workspace/math0286/R/win-library/3.6/matrixOperators.r")
+
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 ## Custom Functions 
 
 # beta distribution shape parameter estimator function
-##Generates an alpha and a beta value to inform the beta distribution 
+## Generates an alpha and a beta value to inform beta distributions 
 estBetaParams <- function(mu, var) {
   alpha <- ((1 - mu) / var - 1 / mu) * mu ^ 2
   beta <- alpha * (1 / mu - 1)
@@ -46,11 +49,11 @@ SelectAge <- function(gens) {
 }
 
 ## function to assign emigrants to a destination wetland
-## called using destination <- determine.destination(??the place we leave from,emigrants,adj.wetlandMovement)
+## called using destination <- determine.destination(*the wetland we depart*,emigrants,adj.wetlandMovement)
 determine.destination <- function(depart,emigrnts,adjMove) { 
   ## Create a list of Levy flight distances for the moving frogs
   moveDist <- sample(dist.vec, emigrnts, replace=T, prob=pr.pred)
-  # apologies to anyone reading the next snippet -_-
+  # apologies to anyone reading the next snippet -_- it works but would benefit from refactoring
   # a is the distance to the next DS site, b the distance to the next US site
   a <- 0
   b <- 0
@@ -187,7 +190,8 @@ DetermineAges <- function(immiNums) {
 
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
-## upload .csv
+## upload .csvs
+# see also https://github.com/RupertLovesEcology/Lraniformis-Metapopulation-model
 # Populate underlying movement data (site-to-site distance which incorporates site-to-site movement type)
 wetlandMovement <- read.csv("C:/Workspace/wetlandMovement.csv", header = FALSE, sep = ",", dec = ".")
 ## movementTypes are A=DS along river, B=DS cross river, C=Normal overland, D=US along river,E=US cross river,F=50 km +
@@ -213,7 +217,7 @@ iter <- 10000
 generations <- 60
 wetlandNum <- nrow(wetlandMetadata)
 
-###  STORAGE FOR ERRORCHECKING (population size - S,M,L,XL)
+###  variable for errorchecking (population size - S,M,L,XL)
 runCounter <- array(data = 0, dim = wetlandNum)
 
 ## landscape resistance for movement type A-G *note F is a reserved term for FALSE*
@@ -559,7 +563,7 @@ banrockFish <- c(F,T,T)
  ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
  ## And NOW for the actual model!
  ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
- ## Version 12.0
+ ## Version 15.0
  ##############################################################
  ## 23 wetland populations of four possible sizes (S,M,L,XL)
  ## 60 generations 50 + 10 for burn in
@@ -598,8 +602,6 @@ eWaterSites <- c(11,13,14,16)   # environmental watering at four sites which are
    annualWetness <- read.csv("C:/Workspace/OrderedAnnualWetnessDrought2.csv", header = TRUE, sep = ",", dec = ".") 
   }
 
- 
-
 ## set up arrays to track emigration and immigration
 moveAgeNm <- c("1-2yr","2-3yr","3-4yr","4-5yr","5+yr") 
 
@@ -629,10 +631,10 @@ for (e in 1:iter) {
   antecedentWet[] <- F
   wetCycle[] <- 0
   
-  ## The Second Loop: run the current projection set up for the number of generations (years actually) + 10 for burn-in 
+  ## The Second Loop: run the current projection set up for the number of years + 10 for burn-in 
   ## NOTE I have generated centuries so this value can go up to 90 yrs as required, currently at 50
   for (i in 1:(generations)) {
-    ## work out the wetness figures for this year (sillHeight and wetMod) 
+    ## calculate the wetness figures for this year (sillHeight and wetMod) 
     # note I have applied the reduction of 10cm to allow for the threshold in this step
     sillCounter <- sillCounter + 1
     sillHeight <- sillForecast[e,sillCounter]
@@ -652,7 +654,7 @@ for (e in 1:iter) {
       }
     }
     
-    #iterate the runCounter used for errorchecking
+    # iterate the runCounter (used for errorchecking)
     if (i==1) { runCounter[wetlandNum] <- (runCounter[wetlandNum] + 1) }
     
     # if there are no frogs alive break from this loop
@@ -757,7 +759,7 @@ for (e in 1:iter) {
            }
       } else { # more complex watering if we implementing eWater
         ## Matrix multiplication using the sillHeight for this year to determine Wet or Dry with a hell of a lot of conditionals
-        #if banrock then wet PRN
+        # if banrock then wet PRN
         eWThresh[1]
         if (wetlands < 3) {
           f <- (i %% 3) + 1
@@ -874,7 +876,7 @@ for (e in 1:iter) {
         ## reset array 
         emi.gen[] <- 0
         
-        #remove from highest to lowest gen, lowest populated gen absorbs the additional emigrants (if required)
+        #remove emigrants proportionally from highest to lowest gen, lowest populated generation absorbs the additional emigrants (if required)
         popCheck <- 0
         
         for (sss in 5:1) {
@@ -912,7 +914,7 @@ for (e in 1:iter) {
             }
           }
         
-         # Sorry for this absurd code but hopefully this last loop will catch the errors - when round(emigrants/totalPop) is < 0
+         # This last loop is an errorcheck - when round(emigrants/totalPop) is < 0 (would benefit from refactoring
           if (sum(emi.gen) != totalMovers) {  
             for (rem in 2:6) {
               if (n.mat[rem,i+1,wetlands] > 0) {
@@ -933,7 +935,7 @@ for (e in 1:iter) {
   
         if (sum(emi.gen) != totalMovers) {  stop("length(emi.gen) != length(destinations)")   }   # quick error check 
        
-         ## check movement survival and assing to immigrants and successful rescue arrays
+         ## check movement survival and pass to immigrant and successful rescue arrays
         oox <-  length(destinations) 
         while (oox > 0) {
           # check if it survived 
@@ -967,7 +969,7 @@ for (e in 1:iter) {
             }
           }
           
-          # reduce by a distance then assure each one is > 0 then assign a wetland * note mortality during movement has been applied
+          # reduce by a distance then assure each one is > 0 then assign a wetland *note mortality during movement has been applied
           for (imi in 1:ncol(immigrantDestinations)) {
             #from DS loop
             stopper <- 2
@@ -1130,6 +1132,7 @@ for (e in 1:iter) {
   ## Last line of Outermost Loop which is the Iteration Loop 
 }
 
+# addresses will have to change   
 #beep(3)
 write.csv(successfulRecolonise,paste0("C:/Workspace/metaOutput/Test/",eWaterA[runNum],eWaterB[runNum],"Recol",eWaterC[runNum],".csv"),row.names = FALSE)
 write.csv(successfulMovement,paste0("C:/Workspace/metaOutput/Test/",eWaterA[runNum],eWaterB[runNum],"Movement",eWaterC[runNum],".csv"),row.names = FALSE)
